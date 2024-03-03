@@ -1,17 +1,33 @@
 /* eslint-disable react/prop-types */
+/**
+ * The Card component in JavaScript React renders a styled card with a title, image, description, and
+ * call-to-action button.
+ *
+ * @param {Object} param
+ * @param {String} param.title
+ * @param {Object} param.img
+ * @param {String} param.img.src
+ * @param {String} param.img.alt
+ * @param {String} param.description
+ * @param {String} param.cta
+ */
 const Card = ({ title, img, description, cta }) => {
     return (
-      <article className="grid gap-2 rounded-md border-2 border-accent-1 p-6">
-        <h2 className="text-3xl font-bold">{title}</h2>
-        <img src={img.src} alt={img.alt} className="aspect-video rounded-sm" />
-        <p>{description}</p>
-        <a
-          href="#"
-          className="bg-content text-bkg grid place-items-center max-w-fit px-4 py-2 rounded-sm hover:opacity-90 transition-opacity"
-        >
-          {cta}
-        </a>
-      </article>
-    );
-  };
-  export default Card;
+        <article className="grid gap-2 rounded-md border-2 border-accent-1 p-6">
+            <h2 className="text-3xl font-bold">{title}</h2>
+            <img
+                src={img.src}
+                alt={img.alt}
+                className="aspect-video rounded-sm"
+            />
+            <p>{description}</p>
+            <a
+                href="#"
+                className="bg-content text-bkg grid place-items-center max-w-fit px-4 py-2 rounded-sm hover:opacity-90 transition-opacity"
+            >
+                {cta}
+            </a>
+        </article>
+    )
+}
+export default Card
