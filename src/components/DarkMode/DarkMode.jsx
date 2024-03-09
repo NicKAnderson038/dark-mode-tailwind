@@ -33,16 +33,6 @@ export default function DarkMode() {
         <>
             <div>
                 <Switch setTheme={setTheme} toggle={toggle} />
-                {/* <input
-                    type="checkbox"
-                    className={styles['checkbox']}
-                    id="checkbox"
-                    onChange={setTheme}
-                    checked={toggle}
-                />
-                <label htmlFor="checkbox" className={styles['checkbox-label']}>
-                    <span className={styles['ball']}></span>
-                </label> */}
             </div>
         </>
     )
