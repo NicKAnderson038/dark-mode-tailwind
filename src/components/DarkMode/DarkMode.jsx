@@ -1,13 +1,14 @@
 import { useEffect, useState } from 'react'
+import Switch from '../Card/Switch'
 import styles from './darkMode.module.css'
 
 export default function DarkMode() {
     const [toggle, setToggle] = useState(false)
     useEffect(() => {
         let ignore = false
-        const selectedTheme = localStorage.getItem('selectedTheme')
-        if (selectedTheme !== null && !ignore) {
-            setToggle(selectedTheme === 'dark')
+        if (!ignore) {
+            const selectedTheme = localStorage.getItem('selectedTheme')
+            setToggle(selectedTheme !== 'dark')
             document
                 .querySelector('html')
                 .setAttribute('data-theme', selectedTheme)
@@ -18,14 +19,12 @@ export default function DarkMode() {
     }, [])
 
     function setTheme() {
-        const theme = document.querySelector('html').getAttribute('data-theme')
-        if (theme === 'dark') {
+        if (!toggle) {
             document.querySelector('html').setAttribute('data-theme', 'light')
-            if (theme !== 'light')
-                localStorage.setItem('selectedTheme', 'light')
+            localStorage.setItem('selectedTheme', 'light')
         } else {
             document.querySelector('html').setAttribute('data-theme', 'dark')
-            if (theme !== 'dark') localStorage.setItem('selectedTheme', 'dark')
+            localStorage.setItem('selectedTheme', 'dark')
         }
         setToggle(!toggle)
     }
@@ -33,7 +32,8 @@ export default function DarkMode() {
     return (
         <>
             <div>
-                <input
+                <Switch setTheme={setTheme} toggle={toggle} />
+                {/* <input
                     type="checkbox"
                     className={styles['checkbox']}
                     id="checkbox"
@@ -41,10 +41,8 @@ export default function DarkMode() {
                     checked={toggle}
                 />
                 <label htmlFor="checkbox" className={styles['checkbox-label']}>
-                    {/* <i className={`fas ${styles['fa-moon']}`}></i>
-                    <i className={`fas ${styles['fa-sun']}`}></i> */}
                     <span className={styles['ball']}></span>
-                </label>
+                </label> */}
             </div>
         </>
     )
